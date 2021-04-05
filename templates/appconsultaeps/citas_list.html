@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="col">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col">
+                    <h4>Citas</h4>
+                </div>
+                <a href="{% url 'crear_citas' %}" class="btn btn-primary float-right rounded-0">Crear Cita</a>
+            </div>
+
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead class="thead-inverse">
+                    <th>#</th>
+                    <th>Paciente</th>
+                    <th>Especialista/Medico</th>
+                    <th>Fecha</th>
+                </thead>
+                <tbody>
+                    {% for cita in citas %}
+                    <tr>
+                        <td scope="row">{{ forloop.counter }}</td>
+                        <td>{{ cita.pacientes }}</td>
+                        <td>{{ cita.medico }}</td>
+                        <td>{{ cita.fecha }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+<html>
+<head>
+    <body>
+<Form method="post">
+    {% csrf_token %}
+    {{ CursosForm.as_p }}
+    <button type="submit">enviar</button>
+</Form>
+</body>
+</head>
+</html>

@@ -1,0 +1,142 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>HISTORIAL CLINICO- MEDICINA DIGITAL</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    {% include 'sidebar.html' %}
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        {% include 'navbar.html' %}
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+        <button id="create-historia" class="btn btn-primary" type="button" name="button">Crear historial</button>
+          {% if historias %}
+<table class="table table-striped">
+	<thead >
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">incapacidad</th>
+			<th scope="col">motivo de la consulta</th>
+			<th scope="col">enfermedades actuales</th>
+			<th scope="col">antecedentes</th>
+			<th scope="col">analisis</th>
+            <th scope="col">plan de manejo</th>
+            <th scope="col">operaciones</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for historia in historias%}
+		<tr>
+			<td>{{historia.id}}</td>
+			<td>{{historia.incapacidad}}</td>
+			<td>{{historia.motivo_consulta}}</td>
+			<td>{{historia.enfermedades_actual}}</td>
+			<td>{{historia.antecedentes}}</td>
+            <td>{{historia.analisis}}</td>
+            <td>{{historia.plan_manejo}}</td>
+			<td>
+			<button type="button" class="update-historia btn btn-primary" data-id="{% url 'editar_historia' historia.id %}">editar</button>
+				
+			</td>
+		</tr>
+		{%endfor%}
+
+	</tbody>
+
+</table>
+{%else%}
+          <h1>No existe historial</h1>
+{%endif%}
+
+<div class="modal fade" id="edicion" role="dialog">
+
+</div>
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      {% include 'footer.html' %}
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content"></div>
+      </div>
+    </div>
+  <!-- Bootstrap core JavaScript-->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+  <!-- Page level plugins -->
+  <!-- Page level custom scripts -->
+  <script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
+  <script src="{% static 'js/jquery.bootstrap.modal.forms.min.js' %}"></script>
+  {% block js %}
+  <script type="text/javascript">
+      $(document).ready(function() {
+            $("#create-historia").modalForm({
+                formURL: "{% url 'agregar_historia' %}"
+            });
+             $(".update-historia").each(function () {
+                $(this).modalForm({formURL: $(this).data('id')});
+             });
+
+        });
+  </script>
+  {% endblock js %}
+
+</body>
+
+</html>
