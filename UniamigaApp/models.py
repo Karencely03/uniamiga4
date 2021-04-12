@@ -36,10 +36,10 @@ class Cursos(models.Model):
     Descripcion=models.TextField(max_length=150,null=False,blank=False)
 
 
-class citas(models.Model):
-    fecha=models.DateTimeField()
-    #pacientes=models.ForeignKey(pacientes,on_delete=models.CASCADE)
-    #medico=models.ForeignKey(medico,on_delete=models.CASCADE)
+class Inscripcion(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='Inscripcion')
+    Cursos = models.OneToOneField(Cursos, on_delete=models.CASCADE,related_name='Inscripcion')
+
 
 
 

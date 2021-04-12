@@ -39,33 +39,40 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-<h1>Cursos disponibles</h1>
+
 
        {% if object_list %}
-    {% for Curso in object_list %}
-    <div class="card" style="width: 50rem;">
+          <div class="card">
+            <div class="card-header">
+              <strong class="card-title">Listado de Inscripciones</strong>
 
-       <div class="card-body">
-       <h5 class="card-title">{{Curso.Nombre}}</h5>
-         <h6 class="card-subtitle mb-2 text-muted">{{Curso.id}}</h6>
-        <p class="card-text">{{Curso.Descripcion}}</p>
-        <a href="{%url 'Crear_Inscripcion' request.user.id%}" class="card-link">Inscribirse</a>
-         <br>
-  </div>
-</div>
+            </div>
+            <div class="table-stats order-table ov-h">
+              <table class="table">
+                <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Curso</th>
 
+                </tr>
 
+                </thead>
+                <tbody>
+                {% for Inscripcion in object_list %}
+                <tr>
+                  <td>{{Inscripcion.id}}</td>
+                  <td>{{Inscripcion.Cursos.Nombre}}</td>
 
-
-
-
-
-
+                  <td>
+                    <a href="{%url 'eliminar_Inscripcion' Inscripcion.id %}">Eliminar</a>
+                    <br>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
           {% endfor%}
               {% endif%}
             </div>
-
-          </div>
 
 
         </div>

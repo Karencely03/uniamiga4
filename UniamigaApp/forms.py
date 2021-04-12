@@ -46,3 +46,8 @@ class CursosForm(forms.ModelForm):
     class Meta:
         model = Cursos
         fields =['Nombre','Descripcion']
+
+class IncripcionForm(forms.ModelForm):
+    class Meta:
+        model=Inscripcion
+        fields=['Cursos']

@@ -73,6 +73,28 @@ class Crear_Curso(CreateView):
     success_url = reverse_lazy('listar_curso')
     success_message = 'Curso creado exitosamente!'
 
+def inscripcion_create(request,id):
+    user = User.objects.get(pk=id)
+    if request.method=='POST':
+        Curso=Cursos.objects.get(pk=request.POST.get('Cursos'))
+        inscripcion_create=Inscripcion.objects.create(user=user,Cursos=Curso)
+        if inscripcion_create:
+            return redirect('home')
+    return render(request,'UniamigaApp/inscripcion_form.html',{'form':IncripcionForm})
+
+class Listar_Inscritos(ListView):
+
+    queryset = Inscripcion.objects.filter(user=8)
+    model = Inscripcion
+    form_class=IncripcionForm
+    template_name = 'UniamigaApp/inscripcion_list.html'
+
+class Crear_Inscripcion(CreateView):
+    model = Inscripcion
+    form_class = IncripcionForm
+    
+    success_url = reverse_lazy('home')
+
 
 class Listar_Curso(ListView):
     model = Cursos
@@ -90,6 +112,10 @@ class Actualizar_Cursos(UpdateView):
     template_name = 'cursos.html'
     form_class = CursosForm
     success_url = reverse_lazy('listar_curso')
+
+class Eliminar_Inscritos(DeleteView):
+    model = Inscripcion
+    success_url = reverse_lazy('home')
 
 class Eliminar_Cursos(DeleteView):
     model = Cursos

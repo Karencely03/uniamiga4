@@ -12,5 +12,9 @@ urlpatterns = [
     path('Cursos/list',Listar_Curso.as_view(),name='listar_curso'),
     path('Cursos/Listar',Listar_Cursos.as_view(),name='Listar_cursos'),
     path('Cursos/editar/<int:pk>',Actualizar_Cursos.as_view(),name='editar_curso'),
-    path('Cursos/eliminar/<int:pk>',Eliminar_Cursos.as_view(),name='eliminar_curso')
+    path('Cursos/eliminar/<int:pk>',Eliminar_Cursos.as_view(),name='eliminar_curso'),
+    path('Inscripcioncreate/<int:id>',Crear_Inscripcion.as_view(),name='Crear_Inscripcion'),
+    path('Inscribir/cursos/<int:id>',inscripcion_create,name='cursos_create'),
+    path('Inscribir/Listar/<int:id>',Listar_Inscritos.as_view(),name='Listar_Inscritos'),
+    path('Inscribir/eliminar/<int:pk>',Eliminar_Inscritos.as_view(),name='eliminar_Inscripcion'),
 ]
