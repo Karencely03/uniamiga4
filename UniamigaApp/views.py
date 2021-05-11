@@ -75,6 +75,7 @@ class Crear_Curso(CreateView):
 
 def inscripcion_create(request,id):
     user = User.objects.get(pk=id)
+
     if request.method=='POST':
         Curso=Cursos.objects.get(pk=request.POST.get('Cursos'))
         inscripcion_create=Inscripcion.objects.create(user=user,Cursos=Curso)
@@ -120,3 +121,43 @@ class Eliminar_Inscritos(DeleteView):
 class Eliminar_Cursos(DeleteView):
     model = Cursos
     success_url = reverse_lazy('listar_curso')
+
+
+
+
+def Subir_Archivo(request):
+    titulo = "Bienvenidos"
+    form = RegistradoForm(request.POST or None,request.FILES or None)
+
+    context = {
+        "titulo": titulo,
+        "form":form
+    }
+
+    if form.is_valid():
+        instance=form.save(commit=False)
+        Nombre=form.cleaned_data.get("Nombre")
+        Descripcion=form.cleaned_data.get("Descripcion")
+        form.save()
+
+        context={
+            "titulo": "gracias %s" %(Nombre)
+        }
+        if not Nombre:
+            context={
+                "titulo":"Gracias %s" %(Descripcion)
+            }
+
+
+    return render(request,'Archivos.html',context)
+
+
+def mostrarArchivos(request):
+    Archivos = Archivo.objects.all()
+    context = {"Archivos": Archivos}
+    return render(request,"ListarAr.html",context)
+
+def tareas(request):
+    Archivos= Archivo.objects.all()
+    context ={"Archivos":Archivos}
+    return render(request ,"Tareas.html",context)

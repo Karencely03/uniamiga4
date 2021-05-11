@@ -51,3 +51,10 @@ class IncripcionForm(forms.ModelForm):
     class Meta:
         model=Inscripcion
         fields=['Cursos']
+
+
+
+class RegistradoForm(forms.ModelForm):
+    class Meta:
+        model=Archivo
+        fields=['Nombre','Descripcion','Media']

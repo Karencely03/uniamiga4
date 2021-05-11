@@ -42,8 +42,13 @@ class Inscripcion(models.Model):
 
 
 
-
 #class grupo_familiar(models.Model):
 #    parentesco=models.CharField(max_length=50,null=False,blank=False)
 #    pacientes=models.ForeignKey(pacientes,on_delete=models.CASCADE)
 #    medico=models.ForeignKey(medico,on_delete=models.CASCADE)
+
+class Archivo(models.Model):
+
+    Nombre=models.CharField(max_length=150,null=False,blank=False)
+    Descripcion=models.CharField(max_length=150,null=False,blank=False)
+    Media=models.FileField(upload_to='myfolder/',blank=True,null=True)
