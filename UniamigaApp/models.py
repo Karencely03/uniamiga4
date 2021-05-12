@@ -35,10 +35,12 @@ class Cursos(models.Model):
     Nombre=models.CharField(max_length=50,null=True,blank=True)
     Descripcion=models.TextField(max_length=150,null=False,blank=False)
 
+    def __str__(self):
+        return self.Nombre
 
 class Inscripcion(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='Inscripcion')
-    Cursos = models.OneToOneField(Cursos, on_delete=models.CASCADE,related_name='Inscripcion')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='Inscripcion')
+    Cursos = models.ForeignKey(Cursos, on_delete=models.CASCADE,related_name='Inscripcion')
 
 
 
@@ -48,7 +50,8 @@ class Inscripcion(models.Model):
 #    medico=models.ForeignKey(medico,on_delete=models.CASCADE)
 
 class Archivo(models.Model):
-
+    Curso = models.ForeignKey(Cursos, on_delete=models.CASCADE, related_name='Cursos')
     Nombre=models.CharField(max_length=150,null=False,blank=False)
     Descripcion=models.CharField(max_length=150,null=False,blank=False)
     Media=models.FileField(upload_to='myfolder/',blank=True,null=True)
+

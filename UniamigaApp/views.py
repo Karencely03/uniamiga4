@@ -85,7 +85,6 @@ def inscripcion_create(request,id):
 
 class Listar_Inscritos(ListView):
 
-    queryset = Inscripcion.objects.filter(user=8)
     model = Inscripcion
     form_class=IncripcionForm
     template_name = 'UniamigaApp/inscripcion_list.html'
@@ -125,7 +124,8 @@ class Eliminar_Cursos(DeleteView):
 
 
 
-def Subir_Archivo(request):
+def Subir_Archivo(request,id):
+    Ocursos=Cursos.objects.get(id=id)
     titulo = "Bienvenidos"
     form = RegistradoForm(request.POST or None,request.FILES or None)
 
@@ -136,17 +136,12 @@ def Subir_Archivo(request):
 
     if form.is_valid():
         instance=form.save(commit=False)
+
         Nombre=form.cleaned_data.get("Nombre")
         Descripcion=form.cleaned_data.get("Descripcion")
+        Curso=Ocursos
         form.save()
 
-        context={
-            "titulo": "gracias %s" %(Nombre)
-        }
-        if not Nombre:
-            context={
-                "titulo":"Gracias %s" %(Descripcion)
-            }
 
 
     return render(request,'Archivos.html',context)
@@ -161,3 +156,4 @@ def tareas(request):
     Archivos= Archivo.objects.all()
     context ={"Archivos":Archivos}
     return render(request ,"Tareas.html",context)
+

@@ -57,4 +57,4 @@ class IncripcionForm(forms.ModelForm):
 class RegistradoForm(forms.ModelForm):
     class Meta:
         model=Archivo
-        fields=['Nombre','Descripcion','Media']
+        fields=['Nombre','Descripcion','Media','Curso']
