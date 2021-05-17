@@ -5,7 +5,7 @@ from django.views.generic import CreateView,ListView,UpdateView,DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,HttpResponse
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
 
@@ -124,8 +124,8 @@ class Eliminar_Cursos(DeleteView):
 
 
 
-def Subir_Archivo(request,id):
-    Ocursos=Cursos.objects.get(id=id)
+def Subir_Archivo(request):
+
     titulo = "Bienvenidos"
     form = RegistradoForm(request.POST or None,request.FILES or None)
 
@@ -139,21 +139,25 @@ def Subir_Archivo(request,id):
 
         Nombre=form.cleaned_data.get("Nombre")
         Descripcion=form.cleaned_data.get("Descripcion")
-        Curso=Ocursos
         form.save()
-
+        return redirect('listar_curso')
 
 
     return render(request,'Archivos.html',context)
 
 
-def mostrarArchivos(request):
-    Archivos = Archivo.objects.all()
+def mostrarArchivos(request,id):
+
+    Archivos = Archivo.objects.filter(Curso=id)
     context = {"Archivos": Archivos}
     return render(request,"ListarAr.html",context)
 
-def tareas(request):
-    Archivos= Archivo.objects.all()
+def tareas(request,slug_text):
+    Archivos= Archivo.objects.filter(slug=slug_text)
+    if Archivos.exists():
+        Archivos=Archivos.first()
+    else:
+        return HttpResponse("<h1>Pagina no encontrada</h1>")
     context ={"Archivos":Archivos}
     return render(request ,"Tareas.html",context)
 

@@ -39,11 +39,12 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
+<h1>Ingresa nuevo contenido a tu curso</h1>
+          <br>
       {% if form %}
     <form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
         {{form.as_p}}
-        <input type="submit" value="Subir Tarea">
+        <input type="submit" value="Subir Contenido">
 
 
     </form>

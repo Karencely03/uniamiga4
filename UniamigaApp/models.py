@@ -1,8 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator
-
-
+from django.db.models.signals import pre_save
+from Uniamiga.utils import unique_slug_generator
 #class tipo_doc (models.Model):
  #   doc=models.CharField(max_length=20, null=False,blank=False)
 
@@ -52,6 +52,11 @@ class Inscripcion(models.Model):
 class Archivo(models.Model):
     Curso = models.ForeignKey(Cursos, on_delete=models.CASCADE, related_name='Cursos')
     Nombre=models.CharField(max_length=150,null=False,blank=False)
-    Descripcion=models.CharField(max_length=150,null=False,blank=False)
+    Descripcion=models.TextField(max_length=150,null=False,blank=False)
     Media=models.FileField(upload_to='myfolder/',blank=True,null=True)
+    slug=models.SlugField(max_length=200,null=True,blank=True)
 
+def slug_generator(sender,instance,*args,**Kwargs):
+    if not instance.slug:
+        instance.slug=unique_slug_generator(instance)
+pre_save.connect(slug_generator,sender=Archivo)

@@ -42,7 +42,6 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-{% for Archivo in Archivos%}
 
 
 
@@ -50,11 +49,13 @@
 
 
 
-{{ Archivo.Nombre }}
+<h1>Contenido del curso</h1>
+          <hr>
+          {% for Archivo in Archivos%}
+          <a href="/eps/Tareas/{{Archivo.slug}}">{{ Archivo.Nombre }}</a>
             <br>
 
- <img src="{{Archivo.Media.url}}" width="400" height="400">
-            <br>
+
   {%endfor%}
 
 
