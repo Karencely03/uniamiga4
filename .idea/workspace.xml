@@ -3,17 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7f20bfab-77f2-41a2-9c05-288193ea1cec" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniamigaApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/UniamigaApp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniamigaApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/UniamigaApp/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniamigaApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/UniamigaApp/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/estilos.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/estilos.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/sb-admin-2.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/sb-admin-2.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Archivos.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Archivos.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ListarAr.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ListarAr.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Tareas.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Tareas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/UniamigaApp/inscripcion_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/UniamigaApp/inscripcion_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/listar_cursos.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/listar_cursos.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/UniamigaApp/inscripcion_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/UniamigaApp/inscripcion_form.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +39,11 @@
       <workItem from="1620995181991" duration="654000" />
       <workItem from="1621115223202" duration="1779000" />
       <workItem from="1621186317956" duration="4574000" />
+      <workItem from="1621301941654" duration="106000" />
+      <workItem from="1621465485464" duration="4044000" />
+      <workItem from="1621702452762" duration="1168000" />
+      <workItem from="1621783969682" duration="3985000" />
+      <workItem from="1621902540626" duration="1281000" />
     </task>
     <servers />
   </component>
