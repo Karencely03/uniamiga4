@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <link rel="stylesheet" href="static/css/estilos.css">
 
   <title>UNIAMIGA</title>
 
@@ -40,6 +41,7 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
+          
 
        {% if object_list %}
           <div class="card">
@@ -47,6 +49,8 @@
               <strong class="card-title">Listado de Inscripciones</strong>
 
             </div>
+
+
             <div class="table-stats order-table ov-h">
               <table class="table">
                 <thead>
@@ -64,16 +68,33 @@
                   <td>{{Inscripcion.Cursos.Nombre}}</td>
 
                   <td>
-                    <a href="{%url 'eliminar_Inscripcion' Inscripcion.id %}">Eliminar</a>
-                    <a href="{%url 'mostra_archivo' Inscripcion.id%}">Contenido</a>
+                    Mira tu curso:
+
+                    <button style="background-color: green; color: black;">
+                      <a style="color: black;" href="{%url 'mostra_archivo' Inscripcion.id%}">Contenido</a>
+                    </button>
+
+                    Elimina tu curso:
+
+                    <button style="background-color:red; color: black;">
+                      <a style="color: black;" href="{%url 'eliminar_Inscripcion' Inscripcion.id %}">Eliminar</a>
+                    </button>
+                    
+                    
                     <br>
                   </td>
                 </tr>
                 </tbody>
               </table>
-          {% endfor%}
+              {% endfor%}
               {% endif%}
             </div>
+
+
+            <article id = "imgCursos">
+              <img src="https://montessoripiura.edu.pe/wp-content/uploads/2021/03/virtual-learning-and-school-choice-inline-banner-2.jpg">
+            </article>
+          
 
 
         </div>
